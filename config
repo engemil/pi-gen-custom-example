@@ -1,0 +1,84 @@
+# =========================================================
+# pi-gen config file for custom RPi OS image
+# For more info go to https://github.com/RPi-Distro/pi-gen
+# =========================================================
+
+# ==================
+# Image Configuration
+# ==================
+IMG_NAME='test-raspios-trixie-armhf' # Image name (default: 'raspios-$RELEASE-$ARCH')
+PI_GEN_RELEASE='TEST-Raspios-Trixie-Armhf-2025-11-19' # Image release name (default: 'Rasperry Pi reference')
+
+# ===================
+# System Architecture
+# ===================
+RELEASE='trixie' # Debian 13 (trixie) based Raspios (default: 'trixie')
+ARCH='armhf'     # armhf architecture (32-bit) (default: 'arm64')
+
+# =============
+# Build Stages
+# =============
+STAGE_LIST='stage0 stage1 stage2 stage6-custom' # If set, it will follow the specified order of stages, e.g. 'stage0 stage1 mystage stage2' (default: 'stage*')
+
+# ======================
+# Directory Configuration
+# ======================
+#BASE_DIR='?' # Top level directory for pi-gen (default location of build.sh)
+#WORK_DIR='?'  # Directory in which pi-gen builds the target system (default '$BASE_DIR/work')
+#DEPLOY_DIR='?' # Output directory for target system images and NOOBS bundles (default '$BASE_DIR/deploy')
+#EXPORT_CONFIG_DIR='?' # Use this directory path as the location of scripts to run when generating images. (default: '$BASE_DIR/export-image')
+
+# ======================
+# Build and Compression
+# ======================
+DEPLOY_COMPRESSION='none'  # Compression type for final image (none, zip, gz, xz) (default: 'zip')
+COMPRESSION_LEVEL=0 # Compression level for final image (0 to 9) (default: 6)
+USE_QEMU=0 # QEMU mode. Creating an image that can be mounted via QEMU for emulated environment (0=disable, 1=enable) (default: 0)
+
+# ===============
+# System Settings
+# ===============
+TARGET_HOSTNAME='test-raspios'  # Hostname for the target system (default: 'raspberrypi')
+
+# =====================
+# Localization Settings
+# =====================
+LOCALE_DEFAULT='en_GB.UTF-8' # Default system locale (default: 'en_GB.UTF-8')
+KEYBOARD_KEYMAP='gb' # Keyboard keymap (default: 'gb')
+KEYBOARD_LAYOUT='English (UK)' # Keyboard layout (default: 'English (UK)')
+TIMEZONE_DEFAULT='Europe/London' # Default system timezone (default: 'Europe/London')
+
+# ==================
+# User Configuration
+# ==================
+FIRST_USER_NAME='pi' # Default user name (default: 'pi')
+FIRST_USER_PASS='pi' # Default user password (default: '') (empty = locked account)
+DISABLE_FIRST_BOOT_USER_RENAME=1 # Disable renaming of first usering doring the first boot (0=enable (FIRST_USER_PASS must be set), 1=disable) (default: 0)
+
+# =================
+# Network Settings
+# =================
+WPA_COUNTRY='GB' # Default WLAN regulatory domain and unblocks WLAN interfaces. Should be a 2-letter ISO/IEC 3166 Country Code, i.e. 'GB' (default: ?)
+
+# ==================
+# Cloud-Init Support
+# ==================
+ENABLE_CLOUD_INIT=1 # If enabled, cloud-init and netplan will be installed and configured (0=disable, 1=enable) (default: 1)
+
+# ================
+# SSH Configuration
+# ================
+ENABLE_SSH=0 # Enable SSH server for remote log in (0=disable, 1=enable) (default: 0)
+#PUBKEY_SSH_FIRST_USER='?' # Public SSH key for first user. Set this value will make that value the contents of ~/.ssh/authorized_keys. NB! Does not automatically enable SSH (default: ?)
+PUBKEY_ONLY_SSH=0 # Disable password authentication for SSH and enable public key authentication. NB! Does not automatically enable SSH (0=disable, 1=enable) (default: 0)
+
+# ===================
+# Repository Settings
+# ===================
+#APT_PROXY='?'    # No APT proxy by default (default: ?)
+#TEMP_REPO='?'    # No temporary repo by default (default: ?)
+
+# ===================
+# Advanced Settings
+# ===================
+#SETFCAP='?' # Setting to 1 will prevent pi-gen from dropping the "capabilities" feature. NB! Only enable this if you understand what it is. (default: unset)
