@@ -1,0 +1,13 @@
+services:
+  test_image_build_service:
+    build:
+      context: .
+      dockerfile: Dockerfile # The path to our Dockerfile
+    command: /usr/local/bin/init-binfmt.sh /bin/bash
+    tty: true
+    privileged: true  # Required for pi-gen to work with binfmt_misc
+    volumes:
+    #  - ..:/workspace:cached # Linux # To be able to spin up from devcontainers # Wierd build message: http2: server: error reading preface from client //./pipe/docker_engine: file has already been closed
+      - ..:/workspace:consistent # Windows # To be able to spin up from devcontainers # Wierd build message: http2: server: error reading preface from client //./pipe/docker_engine: file has already been closed
+    #  - /proc/sys/fs/binfmt_misc:/proc/sys/fs/binfmt_misc:ro # Cannot build container with this in WSL # Bind-mount ARM emulation from host
+
